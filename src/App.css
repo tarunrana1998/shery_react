@@ -1,0 +1,37 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, var(--accent-bg), transparent 40%);
+}
+
+.app-title {
+  margin: 0 0 10px;
+  font-size: 42px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #aa3bff, #ff3b8f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.app-subtitle {
+  color: var(--text);
+  font-size: 18px;
+  margin-bottom: 50px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+}
