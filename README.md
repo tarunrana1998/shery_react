@@ -2,8 +2,7 @@
 
 A beautiful, premium, and minimalist To-Do List and Note-Taking application built with **React**, **Vite**, and **Tailwind CSS v4**.
 
-![App Screenshot](./public/screenshot-app.png)
-*(Note: Replace `./public/screenshot-app.png` with an actual full-screen screenshot of your app)*
+![App Screenshot](./public/screenshot-app.jpg)
 
 ---
 
@@ -25,8 +24,7 @@ A beautiful, premium, and minimalist To-Do List and Note-Taking application buil
 
 ## 🎨 UI & Design Highlights
 
-![Note Card Detail](./public/screenshot-card.png)
-*(Note: Replace `./public/screenshot-card.png` with a close-up screenshot of the notebook card)*
+
 
 1. **Dark Aesthetic**: The app features a pitch-black `bg-black` background with high-contrast white boundaries for sleek visibility.
 2. **Notebook Effect**: We used advanced CSS techniques (`repeating-linear-gradient`, absolute positioning, and inset shadows) to design a realistic spiral notepad without relying on external image assets.
