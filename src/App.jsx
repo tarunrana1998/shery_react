@@ -1,34 +1,26 @@
 import './App.css'
-import Card from './Card'
 
 function App() {
-  return (
-    <div className="app-container">
-      <h1 className="app-title">Meet Our Team</h1>
-      <p className="app-subtitle">The creative minds behind the magic</p>
-      
-      <div className="card-grid">
-        <Card 
-          name="Tarun" 
-          role="Lead Developer" 
-          bio="Architecting elegant solutions for complex problems with a passion for clean code and performance."
-          image="https://i.pravatar.cc/150?img=11"
-        />
-        <Card 
-          name="Himani" 
-          role="UX/UI Designer" 
-          bio="Crafting pixel-perfect, intuitive interfaces that users love, with a keen eye for modern aesthetics."
-          image="https://i.pravatar.cc/150?img=5"
-        />
-        <Card 
-          name="Aisha" 
-          role="Product Manager" 
-          bio="Bridging the gap between engineering and user needs to deliver impactful software experiences."
-          image="https://i.pravatar.cc/150?img=44"
-        />
-      </div>
-    </div>
-  )
+    function submitForm(e) {
+        e.preventDefault();
+        console.log("Form submitted");
+    }
+    return (
+        <div className="app-container">
+            <h1 className="app-title">To DO List</h1>
+            <form className='form align-center m-2 flex-col' onSubmit={submitForm} action="">
+                <div className="m-2 flex-col justify-center">
+                    <input type="text" name="title" placeholder="Title" className="items-center rounded-md bg-white/5 pl-3 m-2 block min-w-0 bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6" />
+                    <textarea type="text" cols={100} rows={10} name="description" placeholder="Description" className="items-center rounded-md bg-white/5 pl-3 m-2 block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6" />
+                </div>
+                <button type="submit" className="rounded-md bg-white/10 px-2.5 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-white/20 data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-indigo-500">Add Task</button>
+            </form>
+
+            <div className="card-grid">
+
+            </div>
+        </div>
+    )
 }
 
 export default App
