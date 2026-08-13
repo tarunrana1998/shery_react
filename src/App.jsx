@@ -31,22 +31,51 @@ function App() {
 
         e.target.reset();
     }
-    return (
-        <div className="app-container">
-            <h1 className="app-title">To DO List</h1>
-            <form className='form align-center m-2 flex-col' onSubmit={submitForm} action="">
-                <div className="m-2 flex-col justify-center">
-                    <input type="text" name="title" placeholder="Title" className="items-center rounded-md bg-white/5 pl-3 m-2 block min-w-0 bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6" />
-                    <input type="text" name="title" placeholder="Title" className="items-center rounded-md bg-white/5 pl-3 m-2 block min-w-0 bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6" />
-                    <textarea type="text" cols={100} rows={10} name="description" placeholder="Description" className="items-center rounded-md bg-white/5 pl-3 m-2 block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6" />
-                </div>
-                <button type="submit" className="rounded-md bg-white/10 px-2.5 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-white/20 data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-indigo-500">Add Task</button>
-            </form>
 
-            <div className="card-grid">
-                {tasks.map(task => (
-                    <ToDoCard key={task.id} title={task.title} description={task.description} />
-                ))}
+    function deleteTask(id) {
+        const updatedTasks = tasks.filter(task => task.id !== id);
+        setTasks(updatedTasks);
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+    }
+
+    return (
+        <div className="flex flex-col md:flex-row min-h-screen w-full bg-black text-white font-sans overflow-hidden">
+            {/* Left Side: Add Notes Form */}
+            <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 border-b md:border-b-0 md:border-r border-white/20 flex flex-col items-start justify-start">
+                <h2 className="text-3xl md:text-4xl font-bold mb-8 tracking-tight">Add Notes</h2>
+                <form className="flex flex-col gap-6 w-full max-w-xl" onSubmit={submitForm}>
+                    <input 
+                        type="text" 
+                        name="title" 
+                        placeholder="Title..." 
+                        className="w-full p-4 bg-transparent border border-white/30 text-white placeholder-gray-500 focus:outline-none focus:border-white transition-colors duration-200 text-lg" 
+                    />
+                    <textarea 
+                        name="description" 
+                        placeholder="Description..." 
+                        rows={6} 
+                        className="w-full p-4 bg-transparent border border-white/30 text-white placeholder-gray-500 focus:outline-none focus:border-white transition-colors duration-200 text-lg resize-y" 
+                    />
+                    <button 
+                        type="submit" 
+                        className="w-full py-4 px-6 bg-white text-black font-bold text-lg hover:bg-gray-200 transition-colors duration-200"
+                    >
+                        Add Note
+                    </button>
+                </form>
+            </div>
+
+            {/* Right Side: Recent Notes */}
+            <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col bg-black h-screen overflow-y-auto">
+                <h2 className="text-3xl md:text-4xl font-bold mb-8 tracking-tight">Recent Notes</h2>
+                <div className="flex flex-wrap gap-8 w-full max-w-4xl items-start">
+                    {tasks.map(task => (
+                        <ToDoCard key={task.id} id={task.id} title={task.title} description={task.description} onDelete={deleteTask} />
+                    ))}
+                    {tasks.length === 0 && (
+                        <p className="text-gray-500 text-lg">No notes added yet.</p>
+                    )}
+                </div>
             </div>
         </div>
     )
